@@ -12,8 +12,7 @@ router.get("/api/workouts", (req, res) => {
       res.status(400).json(err);
     });
 });
-//when posting, front end creates info to send
-//data = req.body, deconstrucing an object is done by placing object in curly brackets to skip over that step
+
 router.post("/api/workouts", (req, res) => {
   Workouts.create(req.body)
     .then((dbWorkouts) => {
@@ -24,16 +23,24 @@ router.post("/api/workouts", (req, res) => {
       res.status(400).json(err);
     });
 });
+//ask Anna about this
+router.put("/api/workouts", (req, res) => {
+  Workouts.findByIdAndUpdate(req.body)
+    .then((dbWorkouts) => {
+      console.log("workout updated");
+      res.json(dbWorkouts);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
 
-// db.orders.aggregate([
-//   { $match: { status: "A" } },
-//   { $group: { _id: "$cust_id", total: { $sum: "$amount" } } },
-// ]);
-// {
-/* // router.post("/api/workouts", ({ body }, res) => {
-//   Transaction.create(body) */
-// }
-//     .then((dbTransaction) =>
+// const router = require("express").Router();
+// const Transaction = require("../models/transaction.js");
+
+// router.post("/api/transaction", ({ body }, res) => {
+//   Transaction.create(body)
+//     .then((dbTransaction) => {
 //       res.json(dbTransaction);
 //     })
 //     .catch((err) => {
