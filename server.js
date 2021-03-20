@@ -24,7 +24,7 @@ mongoose.connect(
 //   useNewUrlParser: true,
 //   useFindAndModify: false,
 // });
-//"mongodb+srv://DesCoding:<password>@cluster0.o7lix.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
 // routes
 app.use(require("./routes/api.js"));
 app.use(require("./routes/html-routes.js"));

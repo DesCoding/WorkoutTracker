@@ -24,8 +24,8 @@ router.post("/api/workouts", (req, res) => {
     });
 });
 //ask Anna about this
-router.put("/api/workouts", (req, res) => {
-  Workouts.findByIdAndUpdate(req.body)
+router.put("/api/workouts/:id", (req, res) => {
+  Workouts.findByIdAndUpdate(req.params.id)
     .then((dbWorkouts) => {
       console.log("workout updated");
       res.json(dbWorkouts);
